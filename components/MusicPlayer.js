@@ -30,7 +30,30 @@ export default function MusicPlayer() {
   const [currentTrack, setCurrentTrack] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
+  const [hasInteracted, setHasInteracted] = useState(false)
   const audioRef = useRef(null)
+  const wasPlayingRef = useRef(false)
+
+  // Handle visibility change to keep music playing
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      const audio = audioRef.current
+      if (!audio) return
+
+      if (document.hidden) {
+        // Store playing state when tab becomes hidden
+        wasPlayingRef.current = isPlaying
+      } else {
+        // Resume if was playing when tab becomes visible again
+        if (wasPlayingRef.current && hasInteracted) {
+          audio.play().catch(() => setIsPlaying(false))
+        }
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
+  }, [isPlaying, hasInteracted])
 
   useEffect(() => {
     const audio = audioRef.current
@@ -39,14 +62,15 @@ export default function MusicPlayer() {
     const updateTime = () => setCurrentTime(audio.currentTime)
     const updateDuration = () => setDuration(audio.duration)
     const handleEnded = () => {
-      // Auto-play next track
-      const nextTrack = (currentTrack + 1) % PLAYLIST.length
-      setCurrentTrack(nextTrack)
-      setTimeout(() => {
-        audioRef.current?.play()
-          .then(() => setIsPlaying(true))
-          .catch(() => setIsPlaying(false))
-      }, 100)
+      // Auto-play next track only if user has interacted
+      if (hasInteracted) {
+        const nextTrack = (currentTrack + 1) % PLAYLIST.length
+        setCurrentTrack(nextTrack)
+        setTimeout(() => {
+          audioRef.current?.play()
+            .catch(() => setIsPlaying(false))
+        }, 100)
+      }
     }
 
     const handlePlay = () => setIsPlaying(true)
@@ -65,15 +89,17 @@ export default function MusicPlayer() {
       audio.removeEventListener('play', handlePlay)
       audio.removeEventListener('pause', handlePause)
     }
-  }, [currentTrack])
+  }, [currentTrack, hasInteracted])
 
   const togglePlay = () => {
+    setHasInteracted(true)
+    const audio = audioRef.current
+    if (!audio) return
+
     if (isPlaying) {
-      audioRef.current?.pause()
-      setIsPlaying(false)
+      audio.pause()
     } else {
-      audioRef.current?.play()
-        .then(() => setIsPlaying(true))
+      audio.play()
         .catch((error) => {
           console.error('Playback failed:', error)
           setIsPlaying(false)
@@ -82,14 +108,17 @@ export default function MusicPlayer() {
   }
 
   const playTrack = (index) => {
+    setHasInteracted(true)
     setCurrentTrack(index)
     setTimeout(() => {
-      audioRef.current?.play()
-        .then(() => setIsPlaying(true))
-        .catch((error) => {
-          console.error('Playback failed:', error)
-          setIsPlaying(false)
-        })
+      const audio = audioRef.current
+      if (audio) {
+        audio.play()
+          .catch((error) => {
+            console.error('Playback failed:', error)
+            setIsPlaying(false)
+          })
+      }
     }, 100)
   }
 
@@ -234,7 +263,11 @@ export default function MusicPlayer() {
               </div>
 
               {/* Hidden Audio Element */}
-              <audio ref={audioRef} src={PLAYLIST[currentTrack].url} />
+              <audio 
+                ref={audioRef} 
+                src={PLAYLIST[currentTrack].url}
+                preload="metadata"
+              />
             </motion.div>
           </>
         )}
