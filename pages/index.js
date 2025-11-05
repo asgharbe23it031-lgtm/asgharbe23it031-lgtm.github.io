@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 
 const Globe = dynamic(() => import('../components/ui/3d-orb'), { ssr: false });
+const StarryBackground = dynamic(() => import('../components/StarryBackground'), { ssr: false });
 
 const TESTIMONIALS = [
   {
@@ -39,8 +40,9 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white antialiased">
-      <header className="max-w-6xl mx-auto p-6 flex items-center justify-between">
+    <div className="min-h-screen bg-black text-white antialiased relative">
+      <StarryBackground />
+      <header className="max-w-6xl mx-auto p-6 flex items-center justify-between relative z-10">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-pink-500 flex items-center justify-center text-black font-bold">A</div>
           <div>
@@ -57,7 +59,7 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="relative min-h-[80vh] flex items-center py-12 md:py-20">
+      <section className="relative min-h-[80vh] flex items-center py-12 md:py-20 z-10">
         <div className="max-w-7xl mx-auto w-full px-6 flex flex-col md:flex-row gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -108,39 +110,118 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Work / Projects */}
-      <section id="work" className="max-w-6xl mx-auto px-6 py-20">
-        <h2 className="text-3xl font-bold mb-6">Selected Projects</h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {[1, 2].map((i) => (
-            <motion.article
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="rounded-2xl bg-gradient-to-br from-gray-900 to-neutral-900 p-6 border border-gray-800 shadow-lg"
-            >
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="text-xl font-semibold">Expense Tracker App</h3>
-                  <p className="text-sm opacity-70">Flutter • Firebase • Charts</p>
-                </div>
-                <div className="text-xs opacity-60">2025</div>
-              </div>
+      {/* Skills & Technologies */}
+      <section id="work" className="max-w-6xl mx-auto px-6 py-20 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl font-bold mb-4">Skills & Technologies</h2>
+          <p className="text-lg opacity-70 mb-12">Tools and frameworks I use to bring ideas to life</p>
+        </motion.div>
 
-              <p className="mt-4 opacity-80 text-sm">A fast, offline-capable expense tracker with analytics and secure auth.</p>
+        <div className="grid md:grid-cols-3 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="p-6 rounded-2xl bg-gradient-to-br from-purple-900/30 to-purple-800/10 border border-purple-700/30 backdrop-blur-sm"
+          >
+            <div className="text-3xl mb-4">📱</div>
+            <h3 className="text-xl font-semibold mb-3">Mobile Development</h3>
+            <div className="flex flex-wrap gap-2">
+              <span className="px-3 py-1 rounded-full bg-purple-600/20 text-sm border border-purple-500/30">Flutter</span>
+              <span className="px-3 py-1 rounded-full bg-purple-600/20 text-sm border border-purple-500/30">Dart</span>
+              <span className="px-3 py-1 rounded-full bg-purple-600/20 text-sm border border-purple-500/30">iOS/Android</span>
+            </div>
+          </motion.div>
 
-              <div className="mt-4 flex gap-3">
-                <a className="text-sm px-3 py-2 rounded-md border border-gray-700">View Code</a>
-                <a className="text-sm px-3 py-2 rounded-md border border-gray-700">Live Demo</a>
-              </div>
-            </motion.article>
-          ))}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="p-6 rounded-2xl bg-gradient-to-br from-pink-900/30 to-pink-800/10 border border-pink-700/30 backdrop-blur-sm"
+          >
+            <div className="text-3xl mb-4">🔥</div>
+            <h3 className="text-xl font-semibold mb-3">Backend & Cloud</h3>
+            <div className="flex flex-wrap gap-2">
+              <span className="px-3 py-1 rounded-full bg-pink-600/20 text-sm border border-pink-500/30">Firebase</span>
+              <span className="px-3 py-1 rounded-full bg-pink-600/20 text-sm border border-pink-500/30">REST APIs</span>
+              <span className="px-3 py-1 rounded-full bg-pink-600/20 text-sm border border-pink-500/30">Cloud</span>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="p-6 rounded-2xl bg-gradient-to-br from-yellow-900/30 to-yellow-800/10 border border-yellow-700/30 backdrop-blur-sm"
+          >
+            <div className="text-3xl mb-4">🎨</div>
+            <h3 className="text-xl font-semibold mb-3">UI/UX Design</h3>
+            <div className="flex flex-wrap gap-2">
+              <span className="px-3 py-1 rounded-full bg-yellow-600/20 text-sm border border-yellow-500/30">Figma</span>
+              <span className="px-3 py-1 rounded-full bg-yellow-600/20 text-sm border border-yellow-500/30">Material Design</span>
+              <span className="px-3 py-1 rounded-full bg-yellow-600/20 text-sm border border-yellow-500/30">Animations</span>
+            </div>
+          </motion.div>
         </div>
+
+        {/* Services */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mt-16"
+        >
+          <h3 className="text-2xl font-bold mb-8">What I Offer</h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="p-6 rounded-xl bg-gradient-to-br from-gray-900/50 to-neutral-900/50 border border-gray-800/50 backdrop-blur-sm">
+              <div className="flex items-start gap-4">
+                <div className="text-2xl">⚡</div>
+                <div>
+                  <h4 className="font-semibold text-lg mb-2">Rapid Prototyping</h4>
+                  <p className="opacity-70 text-sm">Transform your ideas into working prototypes in days, not weeks. Perfect for validation and investor demos.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-xl bg-gradient-to-br from-gray-900/50 to-neutral-900/50 border border-gray-800/50 backdrop-blur-sm">
+              <div className="flex items-start gap-4">
+                <div className="text-2xl">🚀</div>
+                <div>
+                  <h4 className="font-semibold text-lg mb-2">Full-Stack Development</h4>
+                  <p className="opacity-70 text-sm">End-to-end app development with backend integration, authentication, and cloud deployment.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-xl bg-gradient-to-br from-gray-900/50 to-neutral-900/50 border border-gray-800/50 backdrop-blur-sm">
+              <div className="flex items-start gap-4">
+                <div className="text-2xl">🎯</div>
+                <div>
+                  <h4 className="font-semibold text-lg mb-2">App Optimization</h4>
+                  <p className="opacity-70 text-sm">Performance tuning, bug fixes, and feature additions for existing Flutter applications.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-xl bg-gradient-to-br from-gray-900/50 to-neutral-900/50 border border-gray-800/50 backdrop-blur-sm">
+              <div className="flex items-start gap-4">
+                <div className="text-2xl">💡</div>
+                <div>
+                  <h4 className="font-semibold text-lg mb-2">Technical Consulting</h4>
+                  <p className="opacity-70 text-sm">Architecture planning, tech stack decisions, and code reviews to ensure scalable solutions.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* About */}
-      <section id="about" className="max-w-6xl mx-auto px-6 py-12">
+      <section id="about" className="max-w-6xl mx-auto px-6 py-12 relative z-10">
         <div className="grid md:grid-cols-3 gap-8 items-start">
           <div className="md:col-span-2">
             <h2 className="text-3xl font-bold">About me</h2>
@@ -169,7 +250,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section id="testimonials" className="bg-gradient-to-b from-black to-neutral-900 py-16">
+      <section id="testimonials" className="bg-gradient-to-b from-transparent to-black/30 py-16 relative z-10">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-8">What people say</h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -190,7 +271,7 @@ export default function Home() {
       </section>
 
       {/* Contact / Footer */}
-      <footer id="contact" className="max-w-6xl mx-auto px-6 py-12">
+      <footer id="contact" className="max-w-6xl mx-auto px-6 py-12 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <div className="text-sm opacity-70">Want to work together?</div>
