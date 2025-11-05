@@ -15,11 +15,14 @@ export default function Globe() {
 
     // Create scene, camera, and renderer
     const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+    const container = mountRef.current
+    const width = container.clientWidth
+    const height = container.clientHeight
+    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-    renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.setSize(width, height)
     renderer.setPixelRatio(window.devicePixelRatio)
-    mountRef.current.appendChild(renderer.domElement)
+    container.appendChild(renderer.domElement)
 
     // Create a starfield
     const starsGeometry = new THREE.BufferGeometry()
@@ -208,9 +211,12 @@ export default function Globe() {
     })
 
     const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight
+      if (!mountRef.current) return
+      const width = mountRef.current.clientWidth
+      const height = mountRef.current.clientHeight
+      camera.aspect = width / height
       camera.updateProjectionMatrix()
-      renderer.setSize(window.innerWidth, window.innerHeight)
+      renderer.setSize(width, height)
     }
     window.addEventListener("resize", handleResize)
 
@@ -228,9 +234,9 @@ export default function Globe() {
   }, [])
 
   return (
-    <div ref={mountRef} className="fixed top-0 left-0 w-full h-full z-0">
+    <div ref={mountRef} className="relative w-full h-full">
       {showHint && (
-        <div className="absolute bottom-4 right-4 bg-black bg-opacity-30 text-white text-sm px-3 py-1 rounded-full transition-opacity duration-1000 opacity-80 hover:opacity-100">
+        <div className="absolute bottom-4 right-4 bg-black bg-opacity-50 text-white text-xs px-3 py-1 rounded-full transition-opacity duration-1000 opacity-80 hover:opacity-100 z-10">
           Drag to explore
         </div>
       )}

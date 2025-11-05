@@ -57,29 +57,29 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="relative h-[70vh] md:h-[78vh] flex items-center">
-        <div className="max-w-6xl mx-auto w-full px-6 flex flex-col md:flex-row gap-8">
+      <section className="relative min-h-[80vh] flex items-center py-12 md:py-20">
+        <div className="max-w-7xl mx-auto w-full px-6 flex flex-col md:flex-row gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
-            className="flex-1 flex flex-col justify-center gap-6"
+            className="flex-1 flex flex-col justify-center gap-6 z-10"
           >
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
               I build <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-400">fast</span> apps
               <br />that feel alive.
             </h1>
 
-            <p className="max-w-xl opacity-80 text-lg">
+            <p className="max-w-lg opacity-80 text-base md:text-lg">
               {resume.summary} {resume.experience} • {resume.clients}.
             </p>
 
-            <div className="flex gap-4">
-              <a href="#work" className="px-5 py-3 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-500 text-black font-semibold shadow-lg">See my work</a>
-              <a href={resume.linkedin} target="_blank" rel="noreferrer" className="px-5 py-3 rounded-2xl border border-gray-700 text-sm opacity-80">LinkedIn</a>
+            <div className="flex gap-4 flex-wrap">
+              <a href="#work" className="px-5 py-3 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-500 text-black font-semibold shadow-lg hover:shadow-xl transition-shadow">See my work</a>
+              <a href={resume.linkedin} target="_blank" rel="noreferrer" className="px-5 py-3 rounded-2xl border border-gray-700 text-sm opacity-80 hover:opacity-100 transition-opacity">LinkedIn</a>
             </div>
 
-            <div className="mt-6 flex gap-6 text-sm opacity-70">
+            <div className="mt-6 flex gap-8 text-sm opacity-70">
               <div>
                 <div className="font-bold text-xl">1.5yr</div>
                 <div>Experience</div>
@@ -95,10 +95,16 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <div className="flex-1 h-[420px] md:h-[520px] rounded-3xl overflow-hidden shadow-2xl border border-gray-800">
-            {/* Replaced the torus canvas with the interactive globe component (client-only) */}
-            <Globe />
-          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex-1 w-full max-w-lg md:max-w-none"
+          >
+            <div className="relative w-full h-[400px] md:h-[500px] lg:h-[580px] rounded-3xl overflow-hidden bg-black/30 backdrop-blur-sm border border-gray-800/50 shadow-2xl">
+              <Globe />
+            </div>
+          </motion.div>
         </div>
       </section>
 
