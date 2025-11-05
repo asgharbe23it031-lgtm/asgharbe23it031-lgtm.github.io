@@ -40,9 +40,10 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white antialiased relative">
+    <div className="min-h-screen bg-black text-white antialiased relative overflow-x-hidden">
       <StarryBackground />
-      <header className="max-w-6xl mx-auto p-6 flex items-center justify-between relative z-10">
+      <div className="relative z-10">
+      <header className="max-w-6xl mx-auto p-6 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-pink-500 flex items-center justify-center text-black font-bold">A</div>
           <div>
@@ -59,7 +60,7 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="relative min-h-[80vh] flex items-center py-12 md:py-20 z-10">
+      <section className="relative min-h-[80vh] flex items-center py-12 md:py-20">
         <div className="max-w-7xl mx-auto w-full px-6 flex flex-col md:flex-row gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -111,7 +112,7 @@ export default function Home() {
       </section>
 
       {/* Skills & Technologies */}
-      <section id="work" className="max-w-6xl mx-auto px-6 py-20 relative z-10">
+      <section id="work" className="max-w-6xl mx-auto px-6 py-20 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -221,7 +222,7 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section id="about" className="max-w-6xl mx-auto px-6 py-12 relative z-10">
+      <section id="about" className="max-w-6xl mx-auto px-6 py-12 relative">
         <div className="grid md:grid-cols-3 gap-8 items-start">
           <div className="md:col-span-2">
             <h2 className="text-3xl font-bold">About me</h2>
@@ -250,7 +251,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section id="testimonials" className="bg-gradient-to-b from-transparent to-black/30 py-16 relative z-10">
+      <section id="testimonials" className="bg-gradient-to-b from-transparent to-black/30 py-16 relative">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-8">What people say</h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -271,7 +272,7 @@ export default function Home() {
       </section>
 
       {/* Contact / Footer */}
-      <footer id="contact" className="max-w-6xl mx-auto px-6 py-12 relative z-10">
+      <footer id="contact" className="max-w-6xl mx-auto px-6 py-12 relative">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <div className="text-sm opacity-70">Want to work together?</div>
@@ -287,6 +288,7 @@ export default function Home() {
 
         <div className="mt-8 text-xs opacity-60">© {new Date().getFullYear()} {resume.name}. Built with ❤️ for togetha.me</div>
       </footer>
+      </div>
     </div>
   );
 }
