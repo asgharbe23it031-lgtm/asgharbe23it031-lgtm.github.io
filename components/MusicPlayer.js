@@ -39,36 +39,58 @@ export default function MusicPlayer() {
     const updateTime = () => setCurrentTime(audio.currentTime)
     const updateDuration = () => setDuration(audio.duration)
     const handleEnded = () => {
-      setIsPlaying(false)
       // Auto-play next track
       const nextTrack = (currentTrack + 1) % PLAYLIST.length
       setCurrentTrack(nextTrack)
+      setTimeout(() => {
+        audioRef.current?.play()
+          .then(() => setIsPlaying(true))
+          .catch(() => setIsPlaying(false))
+      }, 100)
     }
+
+    const handlePlay = () => setIsPlaying(true)
+    const handlePause = () => setIsPlaying(false)
 
     audio.addEventListener('timeupdate', updateTime)
     audio.addEventListener('loadedmetadata', updateDuration)
     audio.addEventListener('ended', handleEnded)
+    audio.addEventListener('play', handlePlay)
+    audio.addEventListener('pause', handlePause)
 
     return () => {
       audio.removeEventListener('timeupdate', updateTime)
       audio.removeEventListener('loadedmetadata', updateDuration)
       audio.removeEventListener('ended', handleEnded)
+      audio.removeEventListener('play', handlePlay)
+      audio.removeEventListener('pause', handlePause)
     }
   }, [currentTrack])
 
   const togglePlay = () => {
     if (isPlaying) {
       audioRef.current?.pause()
+      setIsPlaying(false)
     } else {
       audioRef.current?.play()
+        .then(() => setIsPlaying(true))
+        .catch((error) => {
+          console.error('Playback failed:', error)
+          setIsPlaying(false)
+        })
     }
-    setIsPlaying(!isPlaying)
   }
 
   const playTrack = (index) => {
     setCurrentTrack(index)
-    setIsPlaying(true)
-    setTimeout(() => audioRef.current?.play(), 100)
+    setTimeout(() => {
+      audioRef.current?.play()
+        .then(() => setIsPlaying(true))
+        .catch((error) => {
+          console.error('Playback failed:', error)
+          setIsPlaying(false)
+        })
+    }, 100)
   }
 
   const skipTrack = (direction) => {
@@ -104,7 +126,7 @@ export default function MusicPlayer() {
         className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-purple-600 to-pink-500 shadow-lg flex items-center justify-center text-xl md:text-2xl hover:shadow-xl transition-shadow"
         title="Music Player"
       >
-        {isPlaying ? '⏸️' : '�'}
+        {isPlaying ? '⏸️' : '🎧'}
       </motion.button>
 
       {/* Music Player Modal */}
