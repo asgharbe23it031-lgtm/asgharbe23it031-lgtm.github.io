@@ -77,7 +77,7 @@ export default function Home() {
             </p>
 
             <div className="flex gap-4 flex-wrap">
-              <a href="#work" className="px-5 py-3 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-500 text-black font-semibold shadow-lg hover:shadow-xl transition-shadow">See my work</a>
+              <a href="#contact" className="px-5 py-3 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-500 text-black font-semibold shadow-lg hover:shadow-xl transition-shadow">Let's talk</a>
               <a href={resume.linkedin} target="_blank" rel="noreferrer" className="px-5 py-3 rounded-2xl border border-gray-700 text-sm opacity-80 hover:opacity-100 transition-opacity">LinkedIn</a>
             </div>
 
