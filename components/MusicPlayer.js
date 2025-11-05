@@ -34,26 +34,61 @@ export default function MusicPlayer() {
   const audioRef = useRef(null)
   const wasPlayingRef = useRef(false)
 
-  // Handle visibility change to keep music playing
+  // Aggressive audio persistence - prevent any interruptions
   useEffect(() => {
-    const handleVisibilityChange = () => {
-      const audio = audioRef.current
-      if (!audio) return
+    const audio = audioRef.current
+    if (!audio) return
 
+    // Store the playing state
+    const checkAndResume = () => {
+      if (wasPlayingRef.current && audio.paused && hasInteracted) {
+        audio.play().catch(() => {})
+      }
+    }
+
+    // Handle various events that might pause audio
+    const handleVisibilityChange = () => {
       if (document.hidden) {
-        // Store playing state when tab becomes hidden
-        wasPlayingRef.current = isPlaying
+        wasPlayingRef.current = !audio.paused
       } else {
-        // Resume if was playing when tab becomes visible again
-        if (wasPlayingRef.current && hasInteracted) {
-          audio.play().catch(() => setIsPlaying(false))
-        }
+        checkAndResume()
+      }
+    }
+
+    const handleFocus = () => {
+      checkAndResume()
+    }
+
+    const handleBlur = () => {
+      wasPlayingRef.current = !audio.paused
+    }
+
+    // Prevent pause on scroll and other interactions
+    const preventInterruption = (e) => {
+      if (wasPlayingRef.current && audio.paused && hasInteracted) {
+        e.preventDefault()
+        audio.play().catch(() => {})
       }
     }
 
     document.addEventListener('visibilitychange', handleVisibilityChange)
-    return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
-  }, [isPlaying, hasInteracted])
+    window.addEventListener('focus', handleFocus)
+    window.addEventListener('blur', handleBlur)
+    window.addEventListener('scroll', checkAndResume, { passive: true })
+    audio.addEventListener('pause', (e) => {
+      // Only allow manual pauses via the play/pause button
+      if (wasPlayingRef.current && e.target === audio) {
+        setTimeout(checkAndResume, 50)
+      }
+    })
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+      window.removeEventListener('focus', handleFocus)
+      window.removeEventListener('blur', handleBlur)
+      window.removeEventListener('scroll', checkAndResume)
+    }
+  }, [hasInteracted])
 
   useEffect(() => {
     const audio = audioRef.current
@@ -63,12 +98,15 @@ export default function MusicPlayer() {
     const updateDuration = () => setDuration(audio.duration)
     const handleEnded = () => {
       // Auto-play next track only if user has interacted
-      if (hasInteracted) {
+      if (hasInteracted && wasPlayingRef.current) {
         const nextTrack = (currentTrack + 1) % PLAYLIST.length
         setCurrentTrack(nextTrack)
         setTimeout(() => {
           audioRef.current?.play()
-            .catch(() => setIsPlaying(false))
+            .catch(() => {
+              setIsPlaying(false)
+              wasPlayingRef.current = false
+            })
         }, 100)
       }
     }
@@ -97,12 +135,15 @@ export default function MusicPlayer() {
     if (!audio) return
 
     if (isPlaying) {
+      wasPlayingRef.current = false
       audio.pause()
     } else {
+      wasPlayingRef.current = true
       audio.play()
         .catch((error) => {
           console.error('Playback failed:', error)
           setIsPlaying(false)
+          wasPlayingRef.current = false
         })
     }
   }
@@ -110,6 +151,7 @@ export default function MusicPlayer() {
   const playTrack = (index) => {
     setHasInteracted(true)
     setCurrentTrack(index)
+    wasPlayingRef.current = true
     setTimeout(() => {
       const audio = audioRef.current
       if (audio) {
@@ -117,6 +159,7 @@ export default function MusicPlayer() {
           .catch((error) => {
             console.error('Playback failed:', error)
             setIsPlaying(false)
+            wasPlayingRef.current = false
           })
       }
     }, 100)
