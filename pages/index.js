@@ -70,12 +70,13 @@ export default function Home() {
             transition={{ duration: 0.7 }}
             className="flex-1 flex flex-col justify-center gap-6 z-10"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
               I build <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-400">fast</span> apps
-              <br />that feel alive.
+              <br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>that feel alive.
             </h1>
 
-            <p className="max-w-lg opacity-80 text-base md:text-lg">
+            <p className="max-w-lg opacity-80 text-sm sm:text-base md:text-lg leading-relaxed">
               {resume.summary} {resume.experience} • {resume.clients}.
             </p>
 
@@ -84,18 +85,18 @@ export default function Home() {
               <a href={resume.linkedin} target="_blank" rel="noreferrer" className="px-5 py-3 rounded-2xl border border-gray-700 text-sm opacity-80 hover:opacity-100 transition-opacity">LinkedIn</a>
             </div>
 
-            <div className="mt-6 flex gap-8 text-sm opacity-70">
+            <div className="mt-6 flex gap-6 sm:gap-8 text-sm opacity-70">
               <div>
-                <div className="font-bold text-xl">1.5yr</div>
-                <div>Experience</div>
+                <div className="font-bold text-lg sm:text-xl">1.5yr</div>
+                <div className="text-xs sm:text-sm">Experience</div>
               </div>
               <div>
-                <div className="font-bold text-xl">50+</div>
-                <div>Clients</div>
+                <div className="font-bold text-lg sm:text-xl">50+</div>
+                <div className="text-xs sm:text-sm">Clients</div>
               </div>
               <div>
-                <div className="font-bold text-xl">100%</div>
-                <div>Delivery Focus</div>
+                <div className="font-bold text-lg sm:text-xl">100%</div>
+                <div className="text-xs sm:text-sm">Delivery</div>
               </div>
             </div>
           </motion.div>
@@ -106,7 +107,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex-1 w-full max-w-lg md:max-w-none"
           >
-            <div className="relative w-full h-[400px] md:h-[500px] lg:h-[580px] rounded-3xl overflow-hidden bg-black/30 backdrop-blur-sm border border-gray-800/50 shadow-2xl">
+            <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[580px] rounded-2xl md:rounded-3xl overflow-hidden bg-black/30 backdrop-blur-sm border border-gray-800/50 shadow-2xl">
               <Globe />
             </div>
           </motion.div>
@@ -114,14 +115,14 @@ export default function Home() {
       </section>
 
       {/* Skills & Technologies */}
-      <section id="work" className="max-w-6xl mx-auto px-6 py-20 relative">
+      <section id="work" className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl font-bold mb-4">Skills & Technologies</h2>
-          <p className="text-lg opacity-70 mb-12">Tools and frameworks I use to bring ideas to life</p>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Skills & Technologies</h2>
+          <p className="text-base sm:text-lg opacity-70 mb-8 sm:mb-12">Tools and frameworks I use to bring ideas to life</p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6">
@@ -129,10 +130,10 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="p-6 rounded-2xl bg-gradient-to-br from-purple-900/30 to-purple-800/10 border border-purple-700/30 backdrop-blur-sm"
+            className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br from-purple-900/30 to-purple-800/10 border border-purple-700/30 backdrop-blur-sm"
           >
-            <div className="text-3xl mb-4">📱</div>
-            <h3 className="text-xl font-semibold mb-3">Mobile Development</h3>
+            <div className="text-2xl sm:text-3xl mb-3 sm:mb-4">📱</div>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">Mobile Development</h3>
             <div className="flex flex-wrap gap-2">
               <span className="px-3 py-1 rounded-full bg-purple-600/20 text-sm border border-purple-500/30">Flutter</span>
               <span className="px-3 py-1 rounded-full bg-purple-600/20 text-sm border border-purple-500/30">Dart</span>
@@ -144,10 +145,10 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="p-6 rounded-2xl bg-gradient-to-br from-pink-900/30 to-pink-800/10 border border-pink-700/30 backdrop-blur-sm"
+            className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br from-pink-900/30 to-pink-800/10 border border-pink-700/30 backdrop-blur-sm"
           >
-            <div className="text-3xl mb-4">🔥</div>
-            <h3 className="text-xl font-semibold mb-3">Backend & Cloud</h3>
+            <div className="text-2xl sm:text-3xl mb-3 sm:mb-4">🔥</div>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">Backend & Cloud</h3>
             <div className="flex flex-wrap gap-2">
               <span className="px-3 py-1 rounded-full bg-pink-600/20 text-sm border border-pink-500/30">Firebase</span>
               <span className="px-3 py-1 rounded-full bg-pink-600/20 text-sm border border-pink-500/30">REST APIs</span>
@@ -159,10 +160,10 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="p-6 rounded-2xl bg-gradient-to-br from-yellow-900/30 to-yellow-800/10 border border-yellow-700/30 backdrop-blur-sm"
+            className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br from-yellow-900/30 to-yellow-800/10 border border-yellow-700/30 backdrop-blur-sm sm:col-span-2 md:col-span-1"
           >
-            <div className="text-3xl mb-4">🎨</div>
-            <h3 className="text-xl font-semibold mb-3">UI/UX Design</h3>
+            <div className="text-2xl sm:text-3xl mb-3 sm:mb-4">🎨</div>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">UI/UX Design</h3>
             <div className="flex flex-wrap gap-2">
               <span className="px-3 py-1 rounded-full bg-yellow-600/20 text-sm border border-yellow-500/30">Figma</span>
               <span className="px-3 py-1 rounded-full bg-yellow-600/20 text-sm border border-yellow-500/30">Material Design</span>
@@ -176,16 +177,16 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mt-16"
+          className="mt-12 sm:mt-16"
         >
-          <h3 className="text-2xl font-bold mb-8">What I Offer</h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="p-6 rounded-xl bg-gradient-to-br from-gray-900/50 to-neutral-900/50 border border-gray-800/50 backdrop-blur-sm">
-              <div className="flex items-start gap-4">
-                <div className="text-2xl">⚡</div>
+          <h3 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">What I Offer</h3>
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+            <div className="p-4 sm:p-6 rounded-xl bg-gradient-to-br from-gray-900/50 to-neutral-900/50 border border-gray-800/50 backdrop-blur-sm">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="text-xl sm:text-2xl flex-shrink-0">⚡</div>
                 <div>
-                  <h4 className="font-semibold text-lg mb-2">Rapid Prototyping</h4>
-                  <p className="opacity-70 text-sm">Transform your ideas into working prototypes in days, not weeks. Perfect for validation and investor demos.</p>
+                  <h4 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2">Rapid Prototyping</h4>
+                  <p className="opacity-70 text-xs sm:text-sm">Transform your ideas into working prototypes in days, not weeks. Perfect for validation and investor demos.</p>
                 </div>
               </div>
             </div>
@@ -224,13 +225,13 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section id="about" className="max-w-6xl mx-auto px-6 py-12 relative">
-        <div className="grid md:grid-cols-3 gap-8 items-start">
+      <section id="about" className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 relative">
+        <div className="grid md:grid-cols-3 gap-6 sm:gap-8 items-start">
           <div className="md:col-span-2">
-            <h2 className="text-3xl font-bold">About me</h2>
-            <p className="mt-4 opacity-80 leading-relaxed">{resume.summary} I primarily use Flutter, Firebase and REST APIs to ship products fast. I like clean UI, small bundles, and pragmatic decisions.</p>
+            <h2 className="text-2xl sm:text-3xl font-bold">About me</h2>
+            <p className="mt-3 sm:mt-4 opacity-80 leading-relaxed text-sm sm:text-base">{resume.summary} I primarily use Flutter, Firebase and REST APIs to ship products fast. I like clean UI, small bundles, and pragmatic decisions.</p>
 
-            <div className="mt-6 grid grid-cols-2 gap-4">
+            <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-3 sm:gap-4">
               <div className="p-4 rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800">
                 <div className="text-sm opacity-70">Experience</div>
                 <div className="font-bold text-xl">1.5 years</div>
@@ -242,7 +243,7 @@ export default function Home() {
             </div>
           </div>
 
-          <aside className="p-6 rounded-2xl border border-gray-800 bg-gradient-to-br from-neutral-900 to-gray-900">
+          <aside className="p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-gray-800 bg-gradient-to-br from-neutral-900 to-gray-900">
             <div className="text-sm opacity-70">Contact</div>
             <div className="font-semibold mt-2">{resume.name}</div>
             <div className="text-sm opacity-80 mt-2">{resume.email}</div>
@@ -253,20 +254,20 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section id="testimonials" className="bg-gradient-to-b from-transparent to-black/30 py-16 relative">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-8">What people say</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+      <section id="testimonials" className="bg-gradient-to-b from-transparent to-black/30 py-12 sm:py-16 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">What people say</h2>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
             {TESTIMONIALS.map((t, idx) => (
               <motion.blockquote
                 key={idx}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.15 }}
-                className="p-6 rounded-xl border border-gray-800 bg-gradient-to-br from-gray-900 to-neutral-900"
+                className="p-4 sm:p-6 rounded-xl border border-gray-800 bg-gradient-to-br from-gray-900 to-neutral-900"
               >
-                <p className="opacity-80">"{t.text}"</p>
-                <footer className="mt-4 text-sm opacity-70">— {t.name}, <span className="opacity-60">{t.role} • {t.location}</span></footer>
+                <p className="opacity-80 text-sm sm:text-base">"{t.text}"</p>
+                <footer className="mt-3 sm:mt-4 text-xs sm:text-sm opacity-70">— {t.name}, <span className="opacity-60">{t.role} • {t.location}</span></footer>
               </motion.blockquote>
             ))}
           </div>
@@ -274,7 +275,7 @@ export default function Home() {
       </section>
 
       {/* Contact / Footer */}
-      <footer id="contact" className="max-w-6xl mx-auto px-6 py-12 relative">
+      <footer id="contact" className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12 relative">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <div className="text-sm opacity-70">Want to work together?</div>

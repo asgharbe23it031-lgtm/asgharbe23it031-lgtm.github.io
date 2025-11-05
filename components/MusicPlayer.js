@@ -101,10 +101,10 @@ export default function MusicPlayer() {
         animate={{ scale: 1 }}
         transition={{ delay: 1, type: 'spring' }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-purple-600 to-pink-500 shadow-lg flex items-center justify-center text-2xl hover:shadow-xl transition-shadow"
+        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-purple-600 to-pink-500 shadow-lg flex items-center justify-center text-xl md:text-2xl hover:shadow-xl transition-shadow"
         title="Music Player"
       >
-        {isPlaying ? '⏸️' : '🎵'}
+        {isPlaying ? '⏸️' : '�'}
       </motion.button>
 
       {/* Music Player Modal */}
@@ -122,7 +122,7 @@ export default function MusicPlayer() {
               initial={{ opacity: 0, y: 100, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 100, scale: 0.9 }}
-              className="fixed bottom-6 right-6 w-96 bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-3xl shadow-2xl z-50 overflow-hidden"
+              className="fixed bottom-4 right-4 left-4 md:bottom-6 md:right-6 md:left-auto md:w-96 bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-3xl shadow-2xl z-50 overflow-hidden"
             >
               {/* Header */}
               <div className="p-6 pb-4">
