@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 
 const Globe = dynamic(() => import('../components/ui/3d-orb'), { ssr: false });
 const StarryBackground = dynamic(() => import('../components/StarryBackground'), { ssr: false });
+const MusicPlayer = dynamic(() => import('../components/MusicPlayer'), { ssr: false });
 
 const TESTIMONIALS = [
   {
@@ -42,6 +43,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white antialiased relative overflow-x-hidden">
       <StarryBackground />
+      <MusicPlayer />
       <div className="relative z-10">
       <header className="max-w-6xl mx-auto p-6 flex items-center justify-between">
         <div className="flex items-center gap-4">
