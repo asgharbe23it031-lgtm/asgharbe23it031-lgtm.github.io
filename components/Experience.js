@@ -6,38 +6,38 @@ const EXPERIENCE = [
     {
         id: 1,
         company: 'Trisaran Money',
-        role: 'Flutter Developer',
-        period: 'June 2025 - Present',
-        duration: 'Currently Working',
+        role: 'Android Developer',
+        period: 'Oct 2025 - Present',
+        duration: '4 months',
         type: 'Full-time',
-        description: 'Building innovative fintech solutions with Flutter, focusing on seamless user experiences and robust financial features.',
-        technologies: ['Flutter', 'Firebase', 'REST APIs', 'Payment Integration'],
-        logo: null, // Will use gradient placeholder
+        description: 'Developing Flutter applications from scratch at Trisaran Money, designing UI/UX, integrating APIs, debugging, and testing fintech solutions.',
+        technologies: ['Flutter', 'Dart', 'REST APIs', 'Mobile Application Development', 'Android Framework'],
+        logo: null,
         gradient: 'from-green-600 to-emerald-500',
         current: true
     },
     {
         id: 2,
-        company: '7seers',
-        role: 'Flutter Developer',
-        period: 'November 2024 - June 2025',
-        duration: '8 months',
-        type: 'Full-time',
-        description: 'Developed cross-platform mobile applications, collaborated with design teams, and implemented complex UI/UX features.',
-        technologies: ['Flutter', 'Dart', 'Firebase', 'REST APIs'],
-        logo: '/logos/7seers-logo.png',
+        company: '7 Seers',
+        role: 'Flutter Developer Intern',
+        period: 'Apr 2025 - Sep 2025',
+        duration: '6 months',
+        type: 'Internship',
+        description: 'Developed and maintained cross-platform applications using Flutter and Dart, enhancing user experience. Integrated REST APIs to ensure seamless data communication and optimized app performance. Collaborated with team members on UI improvements, bug fixes, and feature rollouts to meet project deadlines.',
+        technologies: ['Flutter', 'Dart', 'Git', 'REST APIs'],
+        logo: null,
         gradient: 'from-blue-600 to-cyan-500',
         current: false
     },
     {
         id: 3,
-        company: 'Freelance',
+        company: 'Freelance Projects',
         role: 'Flutter Developer',
-        period: 'July 2023 - Present',
-        duration: '1.5 years',
+        period: 'Dec 2024 - Present',
+        duration: '1 year 1 month',
         type: 'Freelance',
-        description: 'Working with 50+ clients worldwide, delivering high-quality mobile applications across various domains including food delivery, IoT, and education.',
-        technologies: ['Flutter', 'Firebase', 'IoT', 'Maps API', 'Payment Gateways'],
+        description: 'Building mobile applications for startups and small businesses. Delivered 5+ successful projects including social platforms, food delivery apps, and IoT solutions with a focus on quality and client satisfaction.',
+        technologies: ['Flutter', 'Firebase', 'REST APIs', 'UI/UX Design'],
         logo: null,
         gradient: 'from-purple-600 to-pink-500',
         current: true
@@ -140,8 +140,8 @@ export default function Experience() {
                                                     </span>
                                                     <span>•</span>
                                                     <span className={`px-2 py-0.5 rounded-full text-xs ${exp.type === 'Full-time'
-                                                            ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-                                                            : 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
+                                                        ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
+                                                        : 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
                                                         }`}>
                                                         {exp.type}
                                                     </span>
@@ -196,19 +196,19 @@ export default function Experience() {
             >
                 <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-gray-800">
                     <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-2">
-                        2+
+                        2
                     </div>
                     <div className="text-sm opacity-70">Companies</div>
                 </div>
                 <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-gray-800">
                     <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-orange-400 mb-2">
-                        50+
+                        5+
                     </div>
                     <div className="text-sm opacity-70">Freelance Clients</div>
                 </div>
                 <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-gray-800">
                     <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400 mb-2">
-                        1.5yr
+                        1yr 1mo
                     </div>
                     <div className="text-sm opacity-70">Total Experience</div>
                 </div>
