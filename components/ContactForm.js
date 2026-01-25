@@ -7,6 +7,9 @@ export default function ContactForm() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        projectType: '',
+        budget: '',
+        timeline: '',
         message: ''
     })
     const [status, setStatus] = useState('idle') // idle, loading, success, error
@@ -30,7 +33,7 @@ export default function ContactForm() {
 
             if (response.ok) {
                 setStatus('success')
-                setFormData({ name: '', email: '', message: '' })
+                setFormData({ name: '', email: '', projectType: '', budget: '', timeline: '', message: '' })
                 setTimeout(() => setStatus('idle'), 5000)
             } else {
                 setStatus('error')
@@ -151,11 +154,138 @@ export default function ContactForm() {
                         )}
                     </motion.div>
 
-                    {/* Message Field */}
+                    {/* Project Type Field */}
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3 }}
+                        className="relative"
+                    >
+                        <label
+                            htmlFor="projectType"
+                            className={`block text-sm font-medium mb-2 transition-colors ${focusedField === 'projectType' ? 'text-purple-400' : 'text-gray-400'
+                                }`}
+                        >
+                            Project Type
+                        </label>
+                        <select
+                            id="projectType"
+                            name="projectType"
+                            value={formData.projectType}
+                            onChange={handleChange}
+                            onFocus={() => setFocusedField('projectType')}
+                            onBlur={() => setFocusedField(null)}
+                            required
+                            className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all text-white appearance-none cursor-pointer"
+                        >
+                            <option value="" disabled>Select project type...</option>
+                            <option value="New App">New App Development</option>
+                            <option value="Feature Addition">Feature Addition</option>
+                            <option value="Bug Fix">Bug Fix</option>
+                            <option value="App Optimization">App Optimization</option>
+                            <option value="Consultation">Consultation</option>
+                        </select>
+                        {focusedField === 'projectType' && (
+                            <motion.div
+                                layoutId="activeField"
+                                className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-500 rounded-xl -z-10 blur-sm"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 0.3 }}
+                                exit={{ opacity: 0 }}
+                            />
+                        )}
+                    </motion.div>
+
+                    {/* Budget Range Field */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.4 }}
+                        className="relative"
+                    >
+                        <label
+                            htmlFor="budget"
+                            className={`block text-sm font-medium mb-2 transition-colors ${focusedField === 'budget' ? 'text-purple-400' : 'text-gray-400'
+                                }`}
+                        >
+                            Budget Range
+                        </label>
+                        <select
+                            id="budget"
+                            name="budget"
+                            value={formData.budget}
+                            onChange={handleChange}
+                            onFocus={() => setFocusedField('budget')}
+                            onBlur={() => setFocusedField(null)}
+                            required
+                            className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all text-white appearance-none cursor-pointer"
+                        >
+                            <option value="" disabled>Select your budget...</option>
+                            <option value="Under ₹15K">Under ₹15,000</option>
+                            <option value="₹15K - ₹30K">₹15,000 - ₹30,000</option>
+                            <option value="₹30K - ₹50K">₹30,000 - ₹50,000</option>
+                            <option value="₹50K - ₹80K">₹50,000 - ₹80,000</option>
+                            <option value="Above ₹80K">Above ₹80,000</option>
+                            <option value="Not Sure">Not Sure Yet</option>
+                        </select>
+                        {focusedField === 'budget' && (
+                            <motion.div
+                                layoutId="activeField"
+                                className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-500 rounded-xl -z-10 blur-sm"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 0.3 }}
+                                exit={{ opacity: 0 }}
+                            />
+                        )}
+                    </motion.div>
+
+                    {/* Timeline Preference Field */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.5 }}
+                        className="relative"
+                    >
+                        <label
+                            htmlFor="timeline"
+                            className={`block text-sm font-medium mb-2 transition-colors ${focusedField === 'timeline' ? 'text-purple-400' : 'text-gray-400'
+                                }`}
+                        >
+                            Timeline Preference
+                        </label>
+                        <select
+                            id="timeline"
+                            name="timeline"
+                            value={formData.timeline}
+                            onChange={handleChange}
+                            onFocus={() => setFocusedField('timeline')}
+                            onBlur={() => setFocusedField(null)}
+                            required
+                            className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all text-white appearance-none cursor-pointer"
+                        >
+                            <option value="" disabled>When do you need this?</option>
+                            <option value="ASAP">ASAP (Within 1 week)</option>
+                            <option value="1-2 weeks">1-2 weeks</option>
+                            <option value="2-4 weeks">2-4 weeks</option>
+                            <option value="1-2 months">1-2 months</option>
+                            <option value="Flexible">Flexible / Just Exploring</option>
+                        </select>
+                        {focusedField === 'timeline' && (
+                            <motion.div
+                                layoutId="activeField"
+                                className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-500 rounded-xl -z-10 blur-sm"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 0.3 }}
+                                exit={{ opacity: 0 }}
+                            />
+                        )}
+                    </motion.div>
+
+                    {/* Message Field */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.6 }}
                         className="relative"
                     >
                         <label
@@ -255,13 +385,6 @@ export default function ContactForm() {
                     >
                         <span>📧</span>
                         <span>adeshpatel700@gmail.com</span>
-                    </a>
-                    <a
-                        href="tel:+919305719682"
-                        className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 border border-gray-700 rounded-xl hover:border-purple-500 transition-colors text-sm"
-                    >
-                        <span>📱</span>
-                        <span>+91 9305719682</span>
                     </a>
                 </div>
             </motion.div>
