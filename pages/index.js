@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 
@@ -31,25 +31,64 @@ export default function Home() {
     clients: '5+ clients'
   };
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-black text-white antialiased relative overflow-x-hidden">
       <StarryBackground />
       <div className="relative z-10">
-        <header className="max-w-6xl mx-auto p-6 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-pink-500 flex items-center justify-center text-black font-bold">A</div>
-            <div>
-              <div className="text-sm opacity-80">Adesh Chaudhary</div>
-              <div className="text-xs opacity-60">Flutter Developer</div>
+        <header className="sticky top-0 z-50 bg-black/50 backdrop-blur-lg border-b border-white/5 transition-all">
+          <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-purple-600 to-pink-500 flex items-center justify-center text-black font-bold text-lg sm:text-xl">A</div>
+              <div>
+                <div className="text-sm font-semibold opacity-90">Adesh Chaudhary</div>
+                <div className="text-xs opacity-60">Flutter Developer</div>
+              </div>
             </div>
+
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex gap-8 opacity-90 text-sm font-medium">
+              <a href="#work" className="hover:text-purple-400 transition-colors">Work</a>
+              <a href="#projects" className="hover:text-purple-400 transition-colors">Projects</a>
+              <a href="#experience" className="hover:text-purple-400 transition-colors">Experience</a>
+              <a href="#about" className="hover:text-purple-400 transition-colors">About</a>
+              <a href="#contact" className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all">Contact</a>
+            </nav>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 text-white/80 hover:text-white"
+              aria-label="Toggle menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
-          <nav className="hidden md:flex gap-6 opacity-80 text-sm">
-            <a href="#work">Work</a>
-            <a href="#projects">Projects</a>
-            <a href="#experience">Experience</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-          </nav>
+
+          {/* Mobile Nav Overlay */}
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-black/95 border-b border-white/10 overflow-hidden"
+            >
+              <nav className="flex flex-col p-6 gap-4 text-center">
+                <a onClick={() => setIsMenuOpen(false)} href="#work" className="py-2 hover:text-purple-400">Work</a>
+                <a onClick={() => setIsMenuOpen(false)} href="#projects" className="py-2 hover:text-purple-400">Projects</a>
+                <a onClick={() => setIsMenuOpen(false)} href="#experience" className="py-2 hover:text-purple-400">Experience</a>
+                <a onClick={() => setIsMenuOpen(false)} href="#about" className="py-2 hover:text-purple-400">About</a>
+                <a onClick={() => setIsMenuOpen(false)} href="#contact" className="py-3 mt-2 rounded-xl bg-gradient-to-r from-purple-600 to-pink-500 font-semibold">Contact Me</a>
+              </nav>
+            </motion.div>
+          )}
         </header>
 
         {/* Hero */}
@@ -290,7 +329,7 @@ export default function Home() {
               <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-3 sm:gap-4">
                 <div className="p-4 rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800">
                   <div className="text-sm opacity-70">Experience</div>
-                  <div className="font-bold text-xl">1.5 years</div>
+                  <div className="font-bold text-xl">1+ year</div>
                 </div>
                 <div className="p-4 rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800">
                   <div className="text-sm opacity-70">Clients</div>

@@ -62,7 +62,7 @@ export default function AnimatedStats() {
                 transition={{ duration: 0.5, delay: 0.2 }}
             >
                 <div className="font-bold text-lg sm:text-xl">
-                    <AnimatedNumber value={1.5} suffix="yr" />
+                    <AnimatedNumber value={1} suffix="yr+" />
                 </div>
                 <div className="text-xs sm:text-sm">Experience</div>
             </motion.div>
