@@ -7,7 +7,7 @@ const EXPERIENCE = [
         id: 1,
         company: 'Trisaran Money',
         role: 'Android Developer',
-        period: 'Oct 2025 - Present',
+        period: 'Sept 2025 - Present',
         duration: '4 months',
         type: 'Full-time',
         description: 'Developing Flutter applications from scratch at Trisaran Money, designing UI/UX, integrating APIs, debugging, and testing fintech solutions.',
