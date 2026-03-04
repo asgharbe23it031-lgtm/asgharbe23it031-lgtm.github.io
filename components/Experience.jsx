@@ -43,26 +43,7 @@ const EXPERIENCE = [
         ],
         tags: ['Flutter', 'Dart', 'GetX', 'Git', 'REST APIs'],
     },
-    {
-        id: 3,
-        company: 'Freelance',
-        role: 'Flutter Developer',
-        period: 'Dec 2024 – Present',
-        duration: '1 yr 1 mo',
-        type: 'Freelance',
-        current: true,
-        color: '#f472b6',
-        colorBg: 'rgba(244,114,182,0.06)',
-        colorBorder: 'rgba(244,114,182,0.2)',
-        description: 'Independently delivered 5+ mobile products from zero to launch — covering requirement gathering, architecture, UI build, Firebase setup, and store submission.',
-        bullets: [
-            'FaithConnect: social platform with reels, DMs, and two-role access (5k+ design iterations).',
-            'Savora: food delivery app with Maps API, real-time tracking, and payment gateway.',
-            'StudySync: offline-first student productivity app with Pomodoro and analytics.',
-            '100% client satisfaction rate. Zero late deliveries across all projects.',
-        ],
-        tags: ['Flutter', 'Firebase', 'REST APIs', 'Figma', 'UI/UX'],
-    },
+
 ];
 
 const fadeUp = (d = 0) => ({
@@ -146,7 +127,7 @@ export default function Experience() {
                 {/* Summary */}
                 <motion.div initial={{ opacity: 0, y: 18 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.5 }}
                     style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '14px', marginTop: '44px' }}>
-                    {[['2', 'Companies'], ['5+', 'Clients'], ['1yr+', 'Experience']].map(([n, l]) => (
+                    {[['2', 'Companies'], ['13mo', 'Professional Exp.'], ['100%', 'On-time rate']].map(([n, l]) => (
                         <div key={l} style={{ textAlign: 'center', padding: '20px 14px', borderRadius: '12px', border: '1px solid var(--border)', background: 'var(--bg-surface)' }}>
                             <div style={{ fontSize: '1.6rem', fontWeight: 900, letterSpacing: '-0.03em', color: 'var(--accent)' }}>{n}</div>
                             <div style={{ fontSize: '11.5px', color: 'var(--text-muted)', marginTop: '5px' }}>{l}</div>

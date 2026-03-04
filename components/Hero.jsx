@@ -57,7 +57,7 @@ export default function Hero() {
                         {/* Stats row */}
                         <motion.div variants={fadeUp} custom={0.3} initial="hidden" animate="visible"
                             style={{ display: 'flex', gap: '32px', paddingTop: '0px' }}>
-                            {[['5+', 'clients served'], ['2yr+', 'Experience'], ['10+', 'apps shipped']].map(([n, l]) => (
+                            {[['5+', 'clients served'], ['1yr+', 'Pro Experience'], ['10+', 'apps shipped']].map(([n, l]) => (
                                 <div key={l}>
                                     <div style={{ fontSize: '1.45rem', fontWeight: 800, letterSpacing: '-0.03em', color: '#fff' }}>{n}</div>
                                     <div style={{ fontSize: '11.5px', color: 'var(--text-subtle)', marginTop: '3px', lineHeight: 1.3 }}>{l}</div>

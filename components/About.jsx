@@ -61,7 +61,7 @@ export default function About() {
                     {/* Stats — flat, no gradient text */}
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.55, delay: 0.14 }}>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '12px' }}>
-                            {[['10+', 'Apps shipped'], ['5+', 'Clients served'], ['100%', 'Success Rate'], ['100%', 'On-time rate']].map(([n, l]) => (
+                            {[['10+', 'Apps shipped'], ['5+', 'Clients served'], ['1yr+', 'Pro Experience'], ['100%', 'On-time rate']].map(([n, l]) => (
                                 <div key={l}
                                     style={{ padding: '22px 18px', borderRadius: '12px', border: '1px solid var(--border)', background: 'var(--bg-surface)', transition: 'border-color 0.2s' }}
                                     onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(167,139,250,0.3)'}
