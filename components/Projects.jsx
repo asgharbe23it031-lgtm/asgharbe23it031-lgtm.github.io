@@ -22,6 +22,7 @@ const PROJECTS = [
         ],
         stats: [['2 Roles', 'Access Levels'], ['Real-time', 'Messaging'], ['Posts & Reels', 'Content Types']],
         github: 'https://github.com/adeshpatel700-rgb/Faithconnect',
+        apk: '/apks/Faithconnect.apk',
     },
     {
         id: 2,
@@ -52,6 +53,7 @@ const PROJECTS = [
         images: [],
         stats: [['ML', 'Food Recognition'], ['Barcode', 'Scanner'], ['Daily', 'Meal Plans']],
         github: 'https://github.com/adeshpatel700-rgb',
+        apk: '/apks/caloriewala.apk',
     },
     {
         id: 4,
@@ -89,6 +91,38 @@ const PROJECTS = [
         ],
         stats: [['Offline', 'First'], ['Pomodoro', 'Timer'], ['Progress', 'Analytics']],
         github: 'https://github.com/adeshpatel700-rgb',
+    },
+    {
+        id: 6,
+        title: 'Workly',
+        category: 'HR & Workforce',
+        color: '#10b981',
+        colorBg: 'rgba(16,185,129,0.05)',
+        emoji: '💼',
+        featured: false,
+        status: 'Complete',
+        description: 'Workforce management app for HR teams covering attendance tracking, leave management, payroll summaries, and employee performance dashboards.',
+        tags: ['Flutter', 'Firebase', 'GetX', 'REST APIs'],
+        images: [],
+        stats: [['Attendance', 'Tracking'], ['Leave', 'Management'], ['Payroll', 'Summaries']],
+        github: 'https://github.com/adeshpatel700-rgb',
+        apk: '/apks/Workly.apk',
+    },
+    {
+        id: 7,
+        title: 'Expense Tracker',
+        category: 'Finance',
+        color: '#f97316',
+        colorBg: 'rgba(249,115,22,0.05)',
+        emoji: '💰',
+        featured: false,
+        status: 'Complete',
+        description: 'Personal finance tracker with category-wise expense logging, monthly budget limits, visual spending charts, and local data persistence.',
+        tags: ['Flutter', 'Hive', 'GetX', 'Charts'],
+        images: [],
+        stats: [['Budget', 'Limits'], ['Visual', 'Charts'], ['Offline', 'Storage']],
+        github: 'https://github.com/adeshpatel700-rgb/expense-tracker',
+        apk: '/apks/expense-tracker.apk',
     },
 ];
 
@@ -213,14 +247,25 @@ export default function Projects() {
                                     </div>
                                 )}
 
-                                {/* GitHub */}
-                                <a href={selected.github} target="_blank" rel="noreferrer"
-                                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '22px', padding: '10px 20px', borderRadius: '9px', border: `1px solid ${selected.color}30`, color: selected.color, fontSize: '13px', fontWeight: 600, background: `${selected.color}08`, transition: 'background 0.2s' }}
-                                    onMouseEnter={e => e.currentTarget.style.background = `${selected.color}14`}
-                                    onMouseLeave={e => e.currentTarget.style.background = `${selected.color}08`}>
-                                    <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
-                                    View on GitHub
-                                </a>
+                                {/* Actions row: GitHub + APK Download */}
+                                <div style={{ display: 'flex', gap: '10px', marginTop: '22px', flexWrap: 'wrap' }}>
+                                    <a href={selected.github} target="_blank" rel="noreferrer"
+                                        style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 20px', borderRadius: '9px', border: `1px solid ${selected.color}30`, color: selected.color, fontSize: '13px', fontWeight: 600, background: `${selected.color}08`, transition: 'background 0.2s' }}
+                                        onMouseEnter={e => e.currentTarget.style.background = `${selected.color}14`}
+                                        onMouseLeave={e => e.currentTarget.style.background = `${selected.color}08`}>
+                                        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
+                                        View on GitHub
+                                    </a>
+                                    {selected.apk && (
+                                        <a href={selected.apk} download
+                                            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 20px', borderRadius: '9px', border: '1px solid rgba(34,197,94,0.3)', color: '#22c55e', fontSize: '13px', fontWeight: 600, background: 'rgba(34,197,94,0.06)', transition: 'background 0.2s' }}
+                                            onMouseEnter={e => e.currentTarget.style.background = 'rgba(34,197,94,0.12)'}
+                                            onMouseLeave={e => e.currentTarget.style.background = 'rgba(34,197,94,0.06)'}>
+                                            <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                                            Download APK
+                                        </a>
+                                    )}
+                                </div>
                             </div>
                         </motion.div>
                     </>
