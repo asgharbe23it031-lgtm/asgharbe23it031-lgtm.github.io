@@ -310,13 +310,26 @@ function ProjectCard({ p, onOpen }) {
                 </div>
                 <h3 style={{ fontWeight: 700, fontSize: p.featured ? '1.2rem' : '1rem', marginBottom: '7px' }}>{p.title}</h3>
                 <p style={{ fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '14px', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{p.description}</p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '12px' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '14px' }}>
                     {p.tags.slice(0, 4).map(t => <span key={t} className="tag" style={{ fontSize: '11px', padding: '3px 7px' }}>{t}</span>)}
                     {p.tags.length > 4 && <span className="tag" style={{ fontSize: '11px', padding: '3px 7px' }}>+{p.tags.length - 4}</span>}
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '11.5px', color: 'var(--text-subtle)' }}>
-                    View details
-                    <svg width="11" height="11" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M7 17l10-10M7 7h10v10" /></svg>
+
+                {/* Bottom row */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '11.5px', color: 'var(--text-subtle)' }}>
+                        View details
+                        <svg width="11" height="11" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M7 17l10-10M7 7h10v10" /></svg>
+                    </div>
+                    {p.apk && (
+                        <a href={p.apk} download onClick={e => e.stopPropagation()}
+                            style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '5px 11px', borderRadius: '7px', border: '1px solid rgba(34,197,94,0.3)', color: '#22c55e', fontSize: '11px', fontWeight: 600, background: 'rgba(34,197,94,0.06)', transition: 'background 0.2s', textDecoration: 'none' }}
+                            onMouseEnter={e => e.currentTarget.style.background = 'rgba(34,197,94,0.14)'}
+                            onMouseLeave={e => e.currentTarget.style.background = 'rgba(34,197,94,0.06)'}>
+                            <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                            APK
+                        </a>
+                    )}
                 </div>
             </div>
         </div>
