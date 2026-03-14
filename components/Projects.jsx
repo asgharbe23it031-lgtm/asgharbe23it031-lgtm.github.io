@@ -22,7 +22,7 @@ const PROJECTS = [
         ],
         stats: [['2 Roles', 'Access Levels'], ['Real-time', 'Messaging'], ['Posts & Reels', 'Content Types']],
         github: 'https://github.com/adeshpatel700-rgb/Faithconnect',
-        apk: '/apks/Faithconnect.apk',
+        apk: 'https://github.com/asgharbe23it031-lgtm/asgharbe23it031-lgtm.github.io/raw/main/public/apks/Faithconnect.apk',
     },
     {
         id: 2,
@@ -53,7 +53,7 @@ const PROJECTS = [
         images: [],
         stats: [['ML', 'Food Recognition'], ['Barcode', 'Scanner'], ['Daily', 'Meal Plans']],
         github: 'https://github.com/adeshpatel700-rgb',
-        apk: '/apks/caloriewala.apk',
+        apk: 'https://github.com/asgharbe23it031-lgtm/asgharbe23it031-lgtm.github.io/raw/main/public/apks/caloriewala.apk',
     },
     {
         id: 4,
@@ -106,7 +106,7 @@ const PROJECTS = [
         images: [],
         stats: [['Attendance', 'Tracking'], ['Leave', 'Management'], ['Payroll', 'Summaries']],
         github: 'https://github.com/adeshpatel700-rgb',
-        apk: '/apks/Workly.apk',
+        apk: 'https://github.com/asgharbe23it031-lgtm/asgharbe23it031-lgtm.github.io/raw/main/public/apks/Workly.apk',
     },
     {
         id: 7,
@@ -122,7 +122,7 @@ const PROJECTS = [
         images: [],
         stats: [['Budget', 'Limits'], ['Visual', 'Charts'], ['Offline', 'Storage']],
         github: 'https://github.com/adeshpatel700-rgb/expense-tracker',
-        apk: '/apks/expense-tracker.apk',
+        apk: 'https://github.com/asgharbe23it031-lgtm/asgharbe23it031-lgtm.github.io/raw/main/public/apks/expense-tracker.apk',
     },
 ];
 
