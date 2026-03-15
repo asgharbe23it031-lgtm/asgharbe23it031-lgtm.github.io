@@ -13,7 +13,7 @@ const Projects = dynamic(() => import('../components/Projects'), { ssr: false })
 const Skills = dynamic(() => import('../components/Skills'), { ssr: false });
 const Contact = dynamic(() => import('../components/Contact'), { ssr: false });
 
-const SITE_URL = 'https://asgharbe23it031-lgtm.github.io';
+const SITE_URL = 'https://togetha.me';
 const TITLE = 'Adesh Chaudhary — Flutter Developer for Hire | Mobile App Development India';
 const DESCRIPTION = 'Hire Adesh Chaudhary, an experienced Flutter developer from India. I build fast, scalable cross-platform mobile apps for iOS & Android using Flutter, Firebase, REST APIs, and GetX. Available for freelance projects and full-time remote roles.';
 const OG_IMAGE = `${SITE_URL}/og-image.png`;
