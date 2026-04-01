@@ -101,11 +101,11 @@ const PROJECTS = [
         emoji: '💼',
         featured: false,
         status: 'Complete',
-        description: 'Workforce management app for HR teams covering attendance tracking, leave management, payroll summaries, and employee performance dashboards.',
-        tags: ['Flutter', 'Firebase', 'GetX', 'REST APIs'],
+        description: 'A cohesive team synchronization tool designed for small groups to manage on-site tasks effortlessly. Features zero-friction onboarding with 6-digit IDs, real-time synergy, and visual context with location tags and images.',
+        tags: ['Flutter', 'Firebase', 'Provider', 'Cloud Firestore', 'Clean Architecture'],
         images: [],
-        stats: [['Attendance', 'Tracking'], ['Leave', 'Management'], ['Payroll', 'Summaries']],
-        github: 'https://github.com/adeshpatel700-rgb',
+        stats: [['6-digit ID', 'Join Logic'], ['Real-time', 'Synergy'], ['Admin', 'Dashboard']],
+        github: 'https://github.com/adeshpatel700-rgb/Workly',
         apk: 'https://github.com/asgharbe23it031-lgtm/asgharbe23it031-lgtm.github.io/raw/main/public/apks/Workly.apk',
     },
     {
@@ -116,13 +116,15 @@ const PROJECTS = [
         colorBg: 'rgba(249,115,22,0.05)',
         emoji: '💰',
         featured: false,
-        status: 'Complete',
-        description: 'Personal finance tracker with category-wise expense logging, monthly budget limits, visual spending charts, and local data persistence.',
-        tags: ['Flutter', 'Hive', 'GetX', 'Charts'],
+        status: 'Live on Play Store',
+        description: 'Production-ready personal finance tracker with category-wise expense logging, monthly budget limits, visual spending charts, and local data persistence. Currently available for closed testing on Google Play.',
+        tags: ['Flutter', 'Hive', 'GetX', 'Charts', 'Google Play'],
         images: [],
-        stats: [['Budget', 'Limits'], ['Visual', 'Charts'], ['Offline', 'Storage']],
+        stats: [['Budget', 'Limits'], ['Visual', 'Charts'], ['Play Store', 'Production']],
         github: 'https://github.com/adeshpatel700-rgb/expense-tracker',
         apk: 'https://github.com/asgharbe23it031-lgtm/asgharbe23it031-lgtm.github.io/raw/main/public/apks/expense-tracker.apk',
+        playStore: 'https://play.google.com/store/apps/details?id=com.adesh.expensetracker',
+        testerGroup: 'https://groups.google.com/g/testers-adesh',
     },
 ];
 
@@ -247,14 +249,14 @@ export default function Projects() {
                                     </div>
                                 )}
 
-                                {/* Actions row: GitHub + APK Download */}
+                                {/* Actions row: GitHub + APK + Store */}
                                 <div style={{ display: 'flex', gap: '10px', marginTop: '22px', flexWrap: 'wrap' }}>
                                     <a href={selected.github} target="_blank" rel="noreferrer"
                                         style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 20px', borderRadius: '9px', border: `1px solid ${selected.color}30`, color: selected.color, fontSize: '13px', fontWeight: 600, background: `${selected.color}08`, transition: 'background 0.2s' }}
                                         onMouseEnter={e => e.currentTarget.style.background = `${selected.color}14`}
                                         onMouseLeave={e => e.currentTarget.style.background = `${selected.color}08`}>
                                         <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
-                                        View on GitHub
+                                        GitHub
                                     </a>
                                     {selected.apk && (
                                         <a href={selected.apk} download
@@ -263,6 +265,24 @@ export default function Projects() {
                                             onMouseLeave={e => e.currentTarget.style.background = 'rgba(34,197,94,0.06)'}>
                                             <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
                                             Download APK
+                                        </a>
+                                    )}
+                                    {selected.playStore && (
+                                        <a href={selected.playStore} target="_blank" rel="noreferrer"
+                                            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 20px', borderRadius: '9px', border: '1px solid rgba(59,130,246,0.3)', color: '#3b82f6', fontSize: '13px', fontWeight: 600, background: 'rgba(59,130,246,0.06)', transition: 'background 0.2s' }}
+                                            onMouseEnter={e => e.currentTarget.style.background = 'rgba(59,130,246,0.12)'}
+                                            onMouseLeave={e => e.currentTarget.style.background = 'rgba(59,130,246,0.06)'}>
+                                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.523 15.3414L20.355 12.5094L17.523 9.67742V15.3414ZM21.961 11.5704L18.991 9.87342L15.834 13.0304L18.991 16.1874L21.961 14.4894C22.485 14.1904 22.825 13.6264 22.825 13.0304C22.825 12.4344 22.485 11.8704 21.961 11.5704ZM3.511 2.22242C3.253 2.22242 3.003 2.29042 2.784 2.41642L13.842 13.4744L17.069 10.2474L3.511 2.51442C3.511 2.51442 3.511 2.22242 3.511 2.22242ZM2.038 3.51142C1.966 3.71542 1.928 3.93142 1.928 4.15642V21.9044C1.928 22.1294 1.966 22.3454 2.038 22.5494L12.426 12.1614L2.038 3.51142ZM13.842 13.4744L2.784 24.5324C3.003 24.6584 3.253 24.7264 3.511 24.7264C3.769 24.7264 4.026 24.6584 4.245 24.5324L17.069 17.2014L13.842 13.9744V13.4744Z" /></svg>
+                                            Play Store
+                                        </a>
+                                    )}
+                                    {selected.testerGroup && (
+                                        <a href={selected.testerGroup} target="_blank" rel="noreferrer"
+                                            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 20px', borderRadius: '9px', border: '1px solid rgba(245,158,11,0.3)', color: '#f59e0b', fontSize: '13px', fontWeight: 600, background: 'rgba(245,158,11,0.06)', transition: 'background 0.2s' }}
+                                            onMouseEnter={e => e.currentTarget.style.background = 'rgba(245,158,11,0.12)'}
+                                            onMouseLeave={e => e.currentTarget.style.background = 'rgba(245,158,11,0.06)'}>
+                                            <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                                            Tester Group
                                         </a>
                                     )}
                                 </div>
